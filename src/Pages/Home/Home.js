@@ -1,18 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
+import TweenOne from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
-import Input from 'antd/lib/input';
-import Button from 'antd/lib/button';
-import InputNumber from 'antd/lib/input-number';
-import Radio from 'antd/lib/radio';
-import Icon from 'antd/lib/icon';
-import { enquireScreen } from 'enquire-js';
 import PropTypes from 'prop-types';
 import './home.less'
 
-const RadioGroup = Radio.Group;
- class LogoGather extends React.Component {
+ export default class LogoGather extends React.Component {
   static propTypes = {
     image: PropTypes.string,
     w: PropTypes.number,
@@ -25,7 +18,7 @@ const RadioGroup = Radio.Group;
     image: 'https://zos.alipayobjects.com/rmsportal/gsRUrUdxeGNDVfO.svg',
     w: 300,
     h: 300,
-    pixSize: 20,
+    pixSize: 15,
     pointSizeMin: 10,
   };
 
@@ -186,161 +179,6 @@ const RadioGroup = Radio.Group;
         >
           {this.state.children}
         </TweenOne>
-      </div>
-    );
-  }
-}
-export default class Edit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.defaultImage = {
-      a: 'https://zos.alipayobjects.com/rmsportal/gsRUrUdxeGNDVfO.svg',
-      b: 'https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg',
-      c: 'https://zos.alipayobjects.com/rmsportal/NbWTEbiswBhrRBU.svg',
-    };
-    this.state = {
-      image: this.defaultImage.a,
-      pixSize: 20,
-      pointSize: 10,
-      isMobile: false,
-      show: false,
-    };
-  }
-
-  componentDidMount() {
-    enquireScreen((isMobile) => {
-      this.setState({ isMobile });
-    });
-  }
-
-  onChangeImage = (e) => {
-    const dom = e.target;
-    this.image = dom.value;
-  }
-
-  onChangePix = (num) => {
-    this.pixSize = num;
-  }
-
-  onClick = () => {
-    if (this.image || this.pixSize || this.pointSize) {
-      this.setState({
-        image: this.image || this.state.image,
-        pixSize: typeof this.pixSize === 'number' ? this.pixSize : this.state.pixSize,
-        pointSize: typeof this.pointSize === 'number' ? this.pointSize : this.state.pointSize,
-        update: true,
-      }, () => {
-        this.setState({
-          update: false,
-        });
-      });
-    }
-  }
-
-  onChangeRadio = (e) => {
-    const target = e.target;
-    const value = target.value;
-    this.image = this.defaultImage[value];
-    this.setState({
-      value,
-    });
-  }
-
-  onChangePoint = (num) => {
-    this.pointSize = num;
-  }
-
-  phoneClick = () => {
-    this.setState({
-      show: !this.state.show,
-    });
-  };
-
-  render() {
-    return (
-      <div style={{ position: 'relative' }}>
-        {!this.state.update && (
-          <LogoGather
-            image={this.state.image}
-            pixSize={this.state.pixSize}
-            pointSizeMin={this.state.pointSize}
-          />
-        )}
-        <div className={`logo-gather-demo-edit-wrapper ${this.state.show ? 'open' : ''}`}>
-          {this.state.isMobile && (
-            <div className="edit-button" onClick={this.phoneClick}>
-              <Icon type="down" />
-            </div>
-          )}
-          <ul>
-            <li>Image:</li>
-            <li >
-              <RadioGroup onChange={this.onChangeRadio} defaultValue="a">
-                <Radio value="a">
-                  <img
-                    src={this.defaultImage.a}
-                    height="30"
-                  />
-                </Radio>
-                <Radio value="b">
-                  <img
-                    src={this.defaultImage.b}
-                    height="30"
-                  />
-                </Radio>
-                <Radio value="c">
-                  <img
-                    src={this.defaultImage.c}
-                    height="30"
-                  />
-                </Radio>
-                <Radio key="d" value="d" className={`${this.state.isMobile ? 'none' : ''}`}>
-                  Other
-                  <TweenOneGroup
-                    style={{ display: 'inline-block', height: 0 }}
-                    enter={{ width: 0, opacity: 0, type: 'from' }}
-                    leave={{ width: 0, opacity: 0 }}
-                  >
-                    {this.state.value === 'd' ? (
-                      <div key="d">
-                        <Input
-                          placeholder="Input image url"
-                          style={{ width: 120, marginLeft: 5 }}
-                          onChange={this.onChangeImage}
-                        />
-                      </div>
-                    ) : null}
-                  </TweenOneGroup>
-                </Radio>
-              </RadioGroup>
-            </li>
-            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>取点像素(pixel)：</li>
-            <li>
-              <InputNumber
-                defaultValue={this.state.pixSize}
-                min={15}
-                style={{ width: 60 }}
-                onChange={this.onChangePix}
-              />
-            </li>
-            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>宽加随机(width)：</li>
-            <li>
-              <InputNumber
-                defaultValue={this.state.pointSize}
-                style={{ width: 60 }}
-                onChange={this.onChangePoint}
-              />
-            </li>
-            <li className={`${this.state.isMobile ? 'phone-float-none' : ''}`}>
-              <Button type="primary" onClick={this.onClick}>Update</Button>
-            </li>
-          </ul>
-          <div style={{ lineHeight: '32px' }}>
-            注：图片尺寸为正方形的PNG或SVG，请确保图片开启跨域；像数点的数值越大则点越少，为流畅最小值为15.
-            <br />
-            Note: The picture size is square PNG or SVG, please make sure the image is open across domains;
-          </div>
-        </div>
       </div>
     );
   }
