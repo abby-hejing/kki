@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker'
 import './index.less'
 
 // const Layout = React.lazy(() => import('./layouts/Layout'))
-const HomePage = React.lazy(() => import('./Pages/HomePage/HomePage'))
+const HomePage = React.lazy(() => import(/* webpackChunkName: 'HomePage' */ './Pages/HomePage/HomePage'))
 
 ReactDOM.render(
   <HashRouter>

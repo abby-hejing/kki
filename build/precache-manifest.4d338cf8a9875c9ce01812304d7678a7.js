@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "13d51c83cf877e9955ee7f8464f26f8a",
+    "revision": "b3e55e69a4a5de523e9b8feaf5d6a29f",
     "url": "/kki/build/index.html"
   },
   {
-    "revision": "a939d7711cfea9f7e3f9",
-    "url": "/kki/build/static/css/2.0a6e50ff.chunk.css"
+    "revision": "320be4be9c736b2530e6",
+    "url": "/kki/build/static/css/HomePage.0a6e50ff.chunk.css"
   },
   {
-    "revision": "b9537cb1d919640e3a36",
+    "revision": "588f08e39d6d4e882c3a",
     "url": "/kki/build/static/css/main.672b5b32.chunk.css"
-  },
-  {
-    "revision": "a939d7711cfea9f7e3f9",
-    "url": "/kki/build/static/js/2.f4eb62a2.chunk.js"
   },
   {
     "revision": "795d3c36839a92f1f630",
     "url": "/kki/build/static/js/3.142c758a.chunk.js"
   },
   {
-    "revision": "b9537cb1d919640e3a36",
-    "url": "/kki/build/static/js/main.e2bfd8dc.chunk.js"
+    "revision": "320be4be9c736b2530e6",
+    "url": "/kki/build/static/js/HomePage.321c1db7.chunk.js"
   },
   {
-    "revision": "5423c935861989801d62",
-    "url": "/kki/build/static/js/runtime~main.6108fc2e.js"
+    "revision": "588f08e39d6d4e882c3a",
+    "url": "/kki/build/static/js/main.2a3ec250.chunk.js"
+  },
+  {
+    "revision": "79764d5ac7fd9bc6f323",
+    "url": "/kki/build/static/js/runtime~main.5b5289e7.js"
   },
   {
     "revision": "b21af0097dd958088f502d868c26b683",
